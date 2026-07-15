@@ -26,7 +26,7 @@ export async function generateWithUserModel(userId: string, input: GenerationInp
   const user = JSON.stringify({ 标题: input.title, 摘要: input.summary, 已确认事实: input.facts ?? [], 待确认: input.unknowns ?? [], 来源: input.sources ?? [], 相关资产: input.assets ?? [], 市场反应: input.market ?? "未知", 置信度: input.confidence ?? "未知" }, null, 2);
   const response = await fetch(join(baseUrl, "chat/completions"), {
     method: "POST",
-    headers: { "content-type": "application/json", authorization: `Bearer ${integration.secrets.apiKey}`, ...(active.provider === "openrouter" ? { "HTTP-Referer": "https://signal-forge.local", "X-OpenRouter-Title": "Signal Forge" } : {}) },
+    headers: { "content-type": "application/json", authorization: `Bearer ${integration.secrets.apiKey}`, ...(active.provider === "openrouter" ? { "HTTP-Referer": "https://web3-content-factory.local", "X-OpenRouter-Title": "Web3 Content Factory" } : {}) },
     body: JSON.stringify({ model, messages: [{ role: "system", content: system }, { role: "user", content: user }], temperature: 0.35, max_tokens: 900 }),
     signal: AbortSignal.timeout(45_000),
   });

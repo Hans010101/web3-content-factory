@@ -265,7 +265,7 @@ export function IntelligenceDashboard() {
   return (
     <main className="app-shell">
       <aside className="sidebar">
-        <div className="brand"><div className="brand-mark">W3</div><div><strong>Signal Forge</strong><span>情报内容中枢</span></div></div>
+        <div className="brand"><div className="brand-mark">W3</div><div><strong>Web3 内容工厂</strong><span>热点 · 创作 · 分发</span></div></div>
         <nav>
           <p className="nav-label">工作空间</p>
           {navItems.map(([id, icon, label]) => (

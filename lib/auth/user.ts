@@ -17,7 +17,7 @@ export async function getRequestUser(request: Request): Promise<RequestUser | nu
 
   const hostname = new URL(request.url).hostname;
   if (hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1") {
-    return { id: "local-development-user", email: "local@signal-forge.invalid", displayName: "本地开发用户", local: true };
+    return { id: "local-development-user", email: "local@web3-content-factory.invalid", displayName: "本地开发用户", local: true };
   }
   return null;
 }

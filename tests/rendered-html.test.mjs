@@ -45,7 +45,7 @@ test("server-renders the intelligence workbench", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Signal Forge/);
+  assert.match(html, /Web3 内容工厂/);
   assert.match(html, /情报|热点|Web3/i);
   assert.match(html, /事件|信号|内容/i);
 });

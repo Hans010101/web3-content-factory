@@ -1,7 +1,7 @@
 {
-  "name": "signal-forge-web3-intel-matrix",
+  "name": "web3-content-factory",
   "version": "1.0.0",
-  "description": "Web3 intelligence, editorial, visual asset, and multi-account distribution workspace.",
+  "description": "Web3 trend discovery, content creation, visual asset, and multi-account distribution workspace.",
   "private": true,
   "engines": {
     "node": ">=22.13.0"

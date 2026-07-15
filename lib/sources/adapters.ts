@@ -1,7 +1,7 @@
 import type { CollectedSignal, SourceAdapter, SourceContext, SourceHealth, SourceHealthStatus } from "./types";
 import { requirePublicHttpUrl } from "./public-url";
 
-const USER_AGENT = "SignalForge/1.0 (Web3 intelligence source validation)";
+const USER_AGENT = "Web3ContentFactory/1.0 (Web3 content source validation)";
 const nowIso = () => new Date().toISOString();
 const health = (status: SourceHealthStatus, detail: string, latencyMs?: number): SourceHealth => ({ ok: status === "live", status, detail, latencyMs, checkedAt: nowIso() });
 const asStrings = (value: unknown) => Array.isArray(value) ? value.filter((item): item is string => typeof item === "string" && item.length > 0) : [];

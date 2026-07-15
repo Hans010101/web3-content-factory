@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Signal Forge — Web3 情报内容中枢",
-  description: "从全球信号到专业内容矩阵的一体化 Web3 情报工作台。",
+  title: "Web3 内容工厂",
+  description: "从全球热点发现到专业内容矩阵的一体化 Web3 内容工作台。",
 };
 
 export default function RootLayout({
