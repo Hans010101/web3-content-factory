@@ -30,14 +30,43 @@ async function render() {
   );
 }
 
-async function loadWorker() {
+async function loadWorker(envOverrides = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("workflow-test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
-  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) }, ...envOverrides };
   const context = { waitUntil() {}, passThroughOnException() {} };
   return (path, init) => worker.fetch(new Request(`http://localhost${path}`, init), env, context);
 }
+
+test("visual factory captures public pages and rejects private-network targets", async () => {
+  let capturedInput;
+  const fetchApp = await loadWorker({
+    BROWSER: {
+      async quickAction(action, input) {
+        assert.equal(action, "screenshot");
+        capturedInput = input;
+        const png = new Uint8Array(16_000);
+        png.set([137, 80, 78, 71]);
+        return new Response(png, { headers: { "content-type": "image/png" } });
+      },
+    },
+  });
+  const headers = { "content-type": "application/json" };
+  const blocked = await fetchApp("/api/visual/screenshot", { method: "POST", headers, body: JSON.stringify({ url: "https://127.0.0.1/private" }) });
+  assert.equal(blocked.status, 400);
+  assert.match(await blocked.text(), /私有网络/);
+
+  const xBlocked = await fetchApp("/api/visual/screenshot", { method: "POST", headers, body: JSON.stringify({ url: "https://x.com/Cloudflare/status/123456789" }) });
+  assert.equal(xBlocked.status, 422);
+  assert.match(await xBlocked.text(), /上传手机或浏览器的原始截图/);
+
+  const captured = await fetchApp("/api/visual/screenshot", { method: "POST", headers, body: JSON.stringify({ url: "https://example.com/research" }) });
+  assert.equal(captured.status, 200);
+  assert.match(captured.headers.get("content-type") ?? "", /image\/png/);
+  assert.equal(new Uint8Array(await captured.arrayBuffer())[0], 137);
+  assert.equal(capturedInput.url, "https://example.com/research");
+});
 
 test("server-renders the intelligence workbench", async () => {
   const response = await render();
@@ -48,6 +77,7 @@ test("server-renders the intelligence workbench", async () => {
   assert.match(html, /Web3 内容工厂/);
   assert.match(html, /情报|热点|Web3/i);
   assert.match(html, /事件|信号|内容/i);
+  assert.match(html, /视觉工厂/);
 });
 
 test("API completes collect, draft, approve, queue and dry-run publish", async () => {

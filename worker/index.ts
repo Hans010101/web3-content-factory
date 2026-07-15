@@ -8,6 +8,9 @@ interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
   MASTER_ENCRYPTION_KEY?: string;
+  BROWSER?: {
+    quickAction(action: "screenshot", input: Record<string, unknown>): Promise<Response>;
+  };
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
