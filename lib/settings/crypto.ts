@@ -2,7 +2,7 @@ import { getRuntimeEnv } from "@/lib/runtime-env";
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
-const memory = globalThis as typeof globalThis & { __signalForgeLocalKey?: CryptoKey };
+const memory = globalThis as typeof globalThis & { __web3ContentFactoryLocalKey?: CryptoKey };
 
 const bytesToBase64 = (bytes: Uint8Array) => {
   let value = "";
@@ -18,8 +18,8 @@ async function encryptionKey(persistent: boolean) {
     return crypto.subtle.importKey("raw", digest, "AES-GCM", false, ["encrypt", "decrypt"]);
   }
   if (persistent) throw new Error("生产存储缺少 MASTER_ENCRYPTION_KEY，已拒绝保存密钥");
-  if (!memory.__signalForgeLocalKey) memory.__signalForgeLocalKey = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
-  return memory.__signalForgeLocalKey;
+  if (!memory.__web3ContentFactoryLocalKey) memory.__web3ContentFactoryLocalKey = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+  return memory.__web3ContentFactoryLocalKey;
 }
 
 export async function encryptSecrets(value: Record<string, string>, persistent: boolean) {

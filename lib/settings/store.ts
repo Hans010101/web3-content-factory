@@ -16,11 +16,11 @@ export interface StoredIntegration {
 export interface AiPreference { provider: string; model: string; updatedAt: string }
 
 const globalStore = globalThis as typeof globalThis & {
-  __signalForgeIntegrations?: Map<string, StoredIntegration>;
-  __signalForgeAiPreferences?: Map<string, AiPreference>;
+  __web3ContentFactoryIntegrations?: Map<string, StoredIntegration>;
+  __web3ContentFactoryAiPreferences?: Map<string, AiPreference>;
 };
-const integrations = globalStore.__signalForgeIntegrations ??= new Map();
-const aiPreferences = globalStore.__signalForgeAiPreferences ??= new Map();
+const integrations = globalStore.__web3ContentFactoryIntegrations ??= new Map();
+const aiPreferences = globalStore.__web3ContentFactoryAiPreferences ??= new Map();
 let schemaReady: Promise<void> | undefined;
 
 async function ensureSchema() {

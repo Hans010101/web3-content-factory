@@ -1,6 +1,7 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import { createAnonymousSessionCookie, getAnonymousSessionId } from "../lib/auth/user";
 import { setRuntimeEnv } from "../lib/runtime-env";
 
 interface Env {
@@ -31,6 +32,11 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     setRuntimeEnv(env);
     const url = new URL(request.url);
+    const shouldCreateSession =
+      !request.headers.get("oai-authenticated-user-email") &&
+      url.hostname !== "localhost" &&
+      url.hostname !== "127.0.0.1" &&
+      !(await getAnonymousSessionId(request));
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
@@ -43,7 +49,14 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const response = await handler.fetch(request, env, ctx);
+    if (!shouldCreateSession) return response;
+
+    const cookie = await createAnonymousSessionCookie();
+    if (!cookie) return response;
+    const sessionResponse = new Response(response.body, response);
+    sessionResponse.headers.append("set-cookie", cookie);
+    return sessionResponse;
   },
 };
 

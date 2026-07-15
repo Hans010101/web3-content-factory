@@ -1,14 +1,14 @@
-export interface SignalForgeRuntimeEnv {
+export interface Web3ContentFactoryRuntimeEnv {
   DB?: D1Database;
   MASTER_ENCRYPTION_KEY?: string;
 }
 
-const runtime = globalThis as typeof globalThis & { __signalForgeRuntimeEnv?: SignalForgeRuntimeEnv };
+const runtime = globalThis as typeof globalThis & { __web3ContentFactoryRuntimeEnv?: Web3ContentFactoryRuntimeEnv };
 
-export function setRuntimeEnv(env: SignalForgeRuntimeEnv) {
-  runtime.__signalForgeRuntimeEnv = env;
+export function setRuntimeEnv(env: Web3ContentFactoryRuntimeEnv) {
+  runtime.__web3ContentFactoryRuntimeEnv = env;
 }
 
 export function getRuntimeEnv() {
-  return runtime.__signalForgeRuntimeEnv ?? {};
+  return runtime.__web3ContentFactoryRuntimeEnv ?? {};
 }
