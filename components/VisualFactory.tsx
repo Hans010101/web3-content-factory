@@ -109,6 +109,7 @@ export function VisualFactory({ event, notify, onReview }: { event: VisualEvent;
           )}
           <div className="qa-bar evidence-qa">
             <span className={hasCapture ? "checked" : ""}>① 作者与账号可见</span><span className={hasCapture ? "checked" : ""}>② 时间与正文完整</span><span>③ 已附原文链接</span>
+            {hasCapture && <a href={imageUrl} download={`web3-evidence-${capturedAt.replace(/\D/g, "").slice(0, 14) || "capture"}.png`}>下载原始图片</a>}
             <button disabled={!hasCapture} onClick={() => notify("截图已加入当前发布素材包")}>加入素材包</button>
           </div>
         </div>
