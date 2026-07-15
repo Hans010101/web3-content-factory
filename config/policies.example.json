@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "scoring": {
+    "velocity": 0.25,
+    "marketAnomaly": 0.2,
+    "sourceTrust": 0.2,
+    "crossSourceAgreement": 0.15,
+    "assetRelevance": 0.1,
+    "novelty": 0.1,
+    "candidateThreshold": 55,
+    "priorityThreshold": 75
+  },
+  "deduplication": {
+    "windowHours": 24,
+    "titleSimilarity": 0.82,
+    "entityOverlap": 0.6,
+    "sameCanonicalUrlIsDuplicate": true
+  },
+  "publishing": {
+    "defaultMode": "dry-run",
+    "maxImages": 4,
+    "maxRetries": 3,
+    "retryMinutes": [1, 5, 20],
+    "cooldownMinutesPerAccount": 10,
+    "requireIdempotencyKey": true,
+    "allowCrossAccountSyndication": false
+  },
+  "automation": {
+    "autoPublish": ["objective-market-anomaly"],
+    "quickReview": ["official-announcement", "routine-market-update"],
+    "mandatoryHumanReview": [
+      "exploit",
+      "bankruptcy",
+      "listing",
+      "delisting",
+      "regulation",
+      "fund-freeze",
+      "rumor",
+      "financial-advice"
+    ]
+  }
+}

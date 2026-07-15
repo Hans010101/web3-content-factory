@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head><meta charset="utf-8"><link rel="stylesheet" href="./base.css"><title>{{title}}</title></head>
+  <body>
+    <main class="canvas" data-visual-kind="timeline">
+      <header class="brand"><span class="brand-dot"></span><span class="brand-name">SIGNAL MATRIX</span><span class="brand-cn">链上情报局</span></header>
+      <div class="eyebrow"><span class="pill pill--accent">{{categoryLabel}}</span><span class="pill">{{status}}</span><time class="timestamp">{{updatedAt}}</time></div>
+      <h1 style="font-size:61px">{{title}}</h1>
+      <ol class="panel" style="list-style:none;margin:58px 0 0;padding:54px 58px">{{eventsHtml}}</ol>
+      <footer class="footer"><span class="source-label">来源</span>{{source}}<small>更早发现 · 交叉核实 · 清晰解读 · 信息不构成投资建议</small></footer>
+    </main>
+  </body>
+</html>

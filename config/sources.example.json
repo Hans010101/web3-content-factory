@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "globalBudgetUsdMonthly": 100,
+  "sources": [
+    { "id": "binance-market", "kind": "market", "provider": "binance-public-data-api", "enabled": true, "costTier": "free", "pollSeconds": 15, "trust": 0.96, "role": "confirm", "topics": ["price", "volume", "kline", "volatility"] },
+    { "id": "official-rss", "kind": "rss", "provider": "curated-official-feeds", "enabled": true, "costTier": "free", "pollSeconds": 180, "trust": 0.94, "role": "confirm", "topics": ["project", "announcement", "security"] },
+    { "id": "exchange-announcements", "kind": "exchange-announcement", "provider": "official-feeds-only", "enabled": false, "costTier": "free", "pollSeconds": 120, "trust": 0.98, "role": "confirm", "topics": ["listing", "delisting", "maintenance"] },
+    { "id": "governance", "kind": "governance", "provider": "discourse-public-api", "enabled": true, "costTier": "free", "pollSeconds": 300, "trust": 0.9, "role": "confirm", "topics": ["proposal", "vote", "upgrade"] },
+    { "id": "regulatory", "kind": "regulation", "provider": "official-rss", "enabled": true, "costTier": "free", "pollSeconds": 300, "trust": 0.99, "role": "confirm", "topics": ["SEC", "CFTC", "enforcement", "policy"] },
+    { "id": "defillama", "kind": "defi", "provider": "defillama-basic-api", "enabled": true, "costTier": "free", "pollSeconds": 300, "trust": 0.88, "role": "confirm", "topics": ["tvl", "protocol", "stablecoin"] },
+    { "id": "github", "kind": "development", "provider": "github-rest", "enabled": true, "costTier": "free", "pollSeconds": 600, "trust": 0.96, "role": "confirm", "secretEnv": "GITHUB_TOKEN", "topics": ["release", "upgrade", "security"] },
+    { "id": "gdelt", "kind": "news", "provider": "gdelt-doc-2", "enabled": true, "costTier": "free", "pollSeconds": 300, "trust": 0.66, "role": "discover", "topics": ["crypto", "macro", "regulation", "global"] },
+    { "id": "hacker-news", "kind": "technology", "provider": "hacker-news-official-api", "enabled": true, "costTier": "free", "pollSeconds": 180, "trust": 0.62, "role": "discover", "topics": ["web3", "blockchain", "technology"] },
+    { "id": "wikimedia", "kind": "attention", "provider": "wikimedia-analytics", "enabled": true, "costTier": "free", "pollSeconds": 3600, "trust": 0.7, "role": "discover", "topics": ["pageviews", "attention"] },
+    { "id": "onchain", "kind": "onchain", "provider": "json-rpc", "enabled": false, "costTier": "freemium", "pollSeconds": 30, "trust": 0.96, "role": "confirm", "secretEnv": "ONCHAIN_RPC_URL", "topics": ["transaction", "block", "address"] },
+    { "id": "coingecko", "kind": "market", "provider": "coingecko-demo", "enabled": false, "costTier": "freemium", "pollSeconds": 120, "trust": 0.85, "role": "confirm", "secretEnv": "COINGECKO_API_KEY", "topics": ["price", "market-cap", "trending"] },
+    { "id": "youtube", "kind": "video", "provider": "youtube-data-v3", "enabled": false, "costTier": "freemium", "pollSeconds": 600, "trust": 0.55, "role": "discover", "secretEnv": "YOUTUBE_API_KEY", "topics": ["video", "creator", "breaking"] },
+    { "id": "x", "kind": "social", "provider": "x-api-v2", "enabled": false, "costTier": "metered", "monthlyCapUsd": 60, "pollSeconds": 120, "trust": 0.5, "role": "discover", "secretEnv": "X_BEARER_TOKEN", "topics": ["social", "opinion", "breaking"] }
+  ]
+}

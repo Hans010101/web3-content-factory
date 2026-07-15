@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "accounts": [
+    {
+      "id": "flash",
+      "displayName": "Web3 快讯",
+      "enabled": true,
+      "topics": ["breaking", "exchange", "regulation", "project"],
+      "tone": ["快速", "直接", "克制"],
+      "formats": ["short-post", "image-post"],
+      "maxPostsPerDay": 20,
+      "minConfidence": 80,
+      "requiresHumanReview": ["listing", "delisting", "regulation", "rumor"],
+      "secretEnv": "BINANCE_SQUARE_API_KEY_FLASH"
+    },
+    {
+      "id": "market",
+      "displayName": "加密市场",
+      "enabled": true,
+      "topics": ["market", "macro", "etf", "derivatives"],
+      "tone": ["口语化", "数据驱动", "不预测价格"],
+      "formats": ["short-post", "image-post", "article"],
+      "maxPostsPerDay": 12,
+      "minConfidence": 75,
+      "requiresHumanReview": ["financial-advice", "price-target"],
+      "secretEnv": "BINANCE_SQUARE_API_KEY_MARKET"
+    },
+    {
+      "id": "onchain",
+      "displayName": "链上雷达",
+      "enabled": true,
+      "topics": ["onchain", "whale", "security", "stablecoin"],
+      "tone": ["专业", "证据优先", "解释地址行为"],
+      "formats": ["image-post", "article"],
+      "maxPostsPerDay": 10,
+      "minConfidence": 85,
+      "requiresHumanReview": ["exploit", "fund-freeze", "attribution"],
+      "secretEnv": "BINANCE_SQUARE_API_KEY_ONCHAIN"
+    },
+    {
+      "id": "research",
+      "displayName": "项目研究",
+      "enabled": true,
+      "topics": ["protocol", "tokenomics", "governance", "funding"],
+      "tone": ["结构化", "平衡观点", "长期视角"],
+      "formats": ["article"],
+      "maxPostsPerDay": 4,
+      "minConfidence": 85,
+      "requiresHumanReview": ["all"],
+      "secretEnv": "BINANCE_SQUARE_API_KEY_RESEARCH"
+    }
+  ]
+}

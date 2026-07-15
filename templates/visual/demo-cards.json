@@ -1,0 +1,53 @@
+[
+  {
+    "id": "security-brief",
+    "kind": "info",
+    "category": "breaking",
+    "status": "已确认",
+    "updatedAt": "2026-07-14 14:32 SGT",
+    "title": "跨链协议发现异常资金转移",
+    "summary": "项目方已暂停部分合约。链上记录显示资金被分散转入 6 个新地址，具体攻击路径和最终损失仍在核实。",
+    "metrics": [
+      { "label": "涉及资金", "value": "$12.4M", "detail": "链上初步估算" },
+      { "label": "代币 30 分钟", "value": "-6.2%", "detail": "成交量放大 3.1×", "tone": "negative" },
+      { "label": "可信度", "value": "92 / 100", "detail": "官方 + 链上交叉确认", "tone": "positive" }
+    ],
+    "source": "项目官方公告 · 链上数据",
+    "reference": "EVT-20260714-031"
+  },
+  {
+    "id": "btc-market",
+    "kind": "market",
+    "status": "数据确认",
+    "updatedAt": "2026-07-14 14:36 SGT",
+    "title": "BTC 放量突破，短时波动显著扩大",
+    "symbol": "BTC / USDT",
+    "changePercent": 3.84,
+    "window": "过去 1 小时",
+    "series": [101.2, 101.6, 101.4, 102.1, 102.4, 102.2, 103.1, 103.8, 104.0, 103.7, 104.6, 105.1],
+    "metrics": [
+      { "label": "现货成交量", "value": "+184%", "detail": "较 20 日均值", "tone": "positive" },
+      { "label": "资金费率", "value": "0.012%", "detail": "多头略占优" },
+      { "label": "1 小时清算", "value": "$46.8M", "detail": "空单占 71%", "tone": "negative" }
+    ],
+    "source": "Binance 公共市场数据",
+    "reference": "MKT-BTC-1H"
+  },
+  {
+    "id": "regulation-timeline",
+    "kind": "timeline",
+    "category": "policy",
+    "status": "已确认",
+    "updatedAt": "2026-07-14 14:40 SGT",
+    "title": "稳定币监管提案：关键节点梳理",
+    "events": [
+      { "time": "09:10 UTC", "text": "监管机构公开新版提案全文与影响说明。" },
+      { "time": "09:28 UTC", "text": "主要稳定币发行方回应，将评估储备披露要求。" },
+      { "time": "10:05 UTC", "text": "相关资产成交量开始放大，市场波动仍有限。" },
+      { "time": "11:40 UTC", "text": "委员会确认下周进入公开听证阶段。" },
+      { "time": "下一节点", "text": "关注听证议程、修订文本与正式表决时间。" }
+    ],
+    "source": "监管机构官网 · 发行方公告",
+    "reference": "POL-20260714-006"
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-07-14T11:03:39.123Z",
+  "inputPath": "/Users/hans.pan/Documents/project/web3-intel-matrix/templates/visual/demo-cards.json",
+  "cards": [
+    {
+      "id": "security-brief",
+      "path": "/Users/hans.pan/Documents/project/web3-intel-matrix/public/demo-assets/security-brief.png",
+      "passed": true,
+      "metadata": {
+        "format": "png",
+        "width": 1200,
+        "height": 1500,
+        "space": "srgb"
+      },
+      "issues": []
+    },
+    {
+      "id": "btc-market",
+      "path": "/Users/hans.pan/Documents/project/web3-intel-matrix/public/demo-assets/btc-market.png",
+      "passed": true,
+      "metadata": {
+        "format": "png",
+        "width": 1200,
+        "height": 1500,
+        "space": "srgb"
+      },
+      "issues": []
+    },
+    {
+      "id": "regulation-timeline",
+      "path": "/Users/hans.pan/Documents/project/web3-intel-matrix/public/demo-assets/regulation-timeline.png",
+      "passed": true,
+      "metadata": {
+        "format": "png",
+        "width": 1200,
+        "height": 1500,
+        "space": "srgb"
+      },
+      "issues": []
+    }
+  ]
+}
