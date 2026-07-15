@@ -276,14 +276,14 @@ export function IntelligenceDashboard() {
         </nav>
         <div className="sidebar-bottom">
           <div className="usage-card"><span>本月付费数据</span><strong>$0.00 <small>/ $100 上限</small></strong><div><i style={{ width: "0%" }} /></div><small>当前仅使用免费数据源</small></div>
-          <button className="profile"><span>HP</span><div><strong>内容管理员</strong><small>本地演示模式</small></div><b>···</b></button>
+          <button className="profile"><span>HP</span><div><strong>内容管理员</strong><small>Cloudflare 正式版</small></div><b>···</b></button>
         </div>
       </aside>
 
       <section className="workspace">
         <header className="topbar">
           <div><p>情报控制台 <span>/ {navItems.find((n) => n[0] === activeNav)?.[2]}</span></p><h1>{navItems.find((n) => n[0] === activeNav)?.[2]}</h1></div>
-          <div className="top-actions"><span className="live-pill"><i /> {sourceSummary.live ? `${sourceSummary.live} 个源本次验证通过` : "本地验证模式"}</span><button aria-label="搜索">⌕</button><button aria-label="通知">♢<em /></button><button className="primary" onClick={() => { setActiveNav("studio"); void generateDraft(); }}>＋ 新建内容</button></div>
+          <div className="top-actions"><span className="live-pill"><i /> {sourceSummary.live ? `${sourceSummary.live} 个源本次验证通过` : "等待信息源检测"}</span><button aria-label="搜索">⌕</button><button aria-label="通知">♢<em /></button><button className="primary" onClick={() => { setActiveNav("studio"); void generateDraft(); }}>＋ 新建内容</button></div>
         </header>
 
         {activeNav === "radar" && (
